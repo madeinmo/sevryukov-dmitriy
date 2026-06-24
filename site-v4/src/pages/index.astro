@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import content from '../data/content.json';
+import docsInfo from '../data/documents.json';
 ---
 
 <Layout 
@@ -86,8 +87,8 @@ import content from '../data/content.json';
             </div>
           </div>
           
-          <div class="relative lg:ml-auto flex justify-center lg:justify-end">
-            <div class="relative w-[280px] h-[280px] sm:w-[380px] sm:h-[380px] lg:w-[440px] lg:h-[520px]">
+          <div class="relative flex justify-center lg:justify-end">
+            <div class="relative w-72 h-72 sm:w-96 sm:h-96 lg:w-[400px] lg:h-[500px]">
               <div class="absolute inset-0 bg-brand-gold rounded-[40px] rotate-6 opacity-20 blur-xl"></div>
               <div class="absolute inset-0 bg-brand-blue rounded-[40px] -rotate-3 opacity-10"></div>
               <img 
@@ -282,22 +283,28 @@ import content from '../data/content.json';
         <!-- Horizontal Carousel -->
         <div class="relative group">
           <div class="flex overflow-x-auto gap-6 snap-x snap-mandatory pb-8 pt-4 px-4 -mx-4 scrollbar-hide" style="scrollbar-width: none; -ms-overflow-style: none;">
-            {Array.from({ length: 24 }).map((_, i) => (
-              <div class="snap-center shrink-0 w-64">
-                <a 
-                  href={`/documents/cert-${i + 1}.pdf`} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  class="block bg-white border border-slate-200 rounded-3xl p-6 text-center hover:shadow-xl hover:-translate-y-2 hover:border-brand-blue transition-all duration-300 h-full flex flex-col items-center justify-center group/card"
+            {docsInfo.map((doc) => (
+              <div class="snap-center shrink-0 w-72">
+                <button 
+                  type="button"
+                  onclick={`openLightbox('${doc.pdf}', '${doc.name}')`}
+                  class="w-full text-left block bg-white border border-slate-200 rounded-3xl p-4 text-center hover:shadow-xl hover:-translate-y-2 hover:border-brand-blue transition-all duration-300 h-full flex flex-col group/card focus:outline-none focus:ring-4 focus:ring-brand-blue/30 cursor-pointer"
                 >
-                  <div class="w-16 h-16 mx-auto bg-slate-50 text-slate-400 rounded-full flex items-center justify-center mb-6 group-hover/card:bg-brand-blue group-hover/card:text-white transition-colors duration-300 shadow-inner">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                  <div class="w-full aspect-[1/1.4] bg-slate-100 rounded-2xl mb-4 relative overflow-hidden flex items-center justify-center pdf-preview-container" data-pdf={doc.pdf}>
+                    <div class="absolute inset-0 flex items-center justify-center text-slate-400 z-0 pdf-loading">
+                      <svg class="w-8 h-8 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    </div>
+                    <canvas class="w-full h-full object-cover relative z-10 opacity-0 transition-opacity duration-500 pdf-canvas"></canvas>
+                    <div class="absolute inset-0 bg-brand-blue/0 group-hover/card:bg-brand-blue/10 transition-colors duration-300 z-20 flex items-center justify-center">
+                      <div class="bg-white text-brand-blue rounded-full p-3 opacity-0 group-hover/card:opacity-100 transform translate-y-4 group-hover/card:translate-y-0 transition-all duration-300 shadow-lg">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                      </div>
+                    </div>
                   </div>
-                  <span class="text-sm font-bold text-slate-700 group-hover/card:text-brand-blue block">
-                    Документ {i + 1}
-                  </span>
-                  <span class="text-xs text-slate-400 mt-2 block font-medium">PDF Файл</span>
-                </a>
+                  <h4 class="text-sm font-bold text-slate-800 group-hover/card:text-brand-blue px-2 leading-tight flex-grow flex items-center justify-center">
+                    {doc.name}
+                  </h4>
+                </button>
               </div>
             ))}
           </div>
@@ -384,7 +391,125 @@ import content from '../data/content.json';
     </div>
   </div>
 
+  <!-- Lightbox Modal for PDF Previews -->
+  <div id="lightbox-modal" class="fixed inset-0 z-[110] hidden flex flex-col items-center justify-center p-4 sm:p-8">
+    <div class="absolute inset-0 bg-slate-950/90 backdrop-blur-sm transition-opacity" onclick="closeLightbox()"></div>
+    <div class="relative w-full max-w-4xl max-h-full flex flex-col items-center pointer-events-none">
+      <button onclick="closeLightbox()" class="absolute -top-12 right-0 sm:-right-12 text-white/70 hover:text-white p-2 pointer-events-auto transition-colors">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+      <div class="bg-white rounded-lg overflow-hidden shadow-2xl relative pointer-events-auto max-h-[85vh] w-full flex items-center justify-center">
+        <div id="lightbox-loading" class="absolute inset-0 flex items-center justify-center bg-slate-100 z-0">
+           <svg class="w-10 h-10 text-brand-blue animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+        </div>
+        <canvas id="lightbox-canvas" class="max-w-full max-h-[85vh] object-contain relative z-10"></canvas>
+      </div>
+      <h3 id="lightbox-title" class="text-white text-xl font-bold mt-6 text-center pointer-events-auto"></h3>
+    </div>
+  </div>
+
+  <!-- PDF.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  
   <script>
+    // Initialize PDF.js worker
+    window.pdfjsLib = window['pdfjs-dist/build/pdf'];
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    // Lightbox logic
+    const lightboxModal = document.getElementById('lightbox-modal');
+    const lightboxCanvas = document.getElementById('lightbox-canvas');
+    const lightboxTitle = document.getElementById('lightbox-title');
+    const lightboxLoading = document.getElementById('lightbox-loading');
+    
+    window.openLightbox = async function(pdfUrl, title) {
+      if (!lightboxModal) return;
+      lightboxModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      if (lightboxTitle) lightboxTitle.textContent = title;
+      if (lightboxLoading) lightboxLoading.style.display = 'flex';
+      
+      const ctx = lightboxCanvas.getContext('2d');
+      ctx.clearRect(0, 0, lightboxCanvas.width, lightboxCanvas.height);
+      
+      try {
+        const loadingTask = pdfjsLib.getDocument(pdfUrl);
+        const pdf = await loadingTask.promise;
+        const page = await pdf.getPage(1);
+        
+        // Render at high resolution for lightbox
+        const viewport = page.getViewport({ scale: 2.5 });
+        lightboxCanvas.width = viewport.width;
+        lightboxCanvas.height = viewport.height;
+        
+        await page.render({
+          canvasContext: ctx,
+          viewport: viewport
+        }).promise;
+        
+      } catch (err) {
+        console.error('Error rendering high-res PDF:', err);
+      } finally {
+        if (lightboxLoading) lightboxLoading.style.display = 'none';
+      }
+    };
+
+    window.closeLightbox = function() {
+      if (lightboxModal) {
+        lightboxModal.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    };
+
+    // Lazy load PDF thumbnails using IntersectionObserver
+    document.addEventListener('DOMContentLoaded', () => {
+      const pdfContainers = document.querySelectorAll('.pdf-preview-container');
+      
+      const renderThumbnail = async (container) => {
+        if (container.dataset.rendered === 'true') return;
+        container.dataset.rendered = 'true';
+        
+        const pdfUrl = container.dataset.pdf;
+        const canvas = container.querySelector('.pdf-canvas');
+        const loading = container.querySelector('.pdf-loading');
+        
+        if (!canvas || !pdfUrl) return;
+        
+        try {
+          const loadingTask = pdfjsLib.getDocument(pdfUrl);
+          const pdf = await loadingTask.promise;
+          const page = await pdf.getPage(1);
+          
+          // Render at lower resolution for thumbnails
+          const viewport = page.getViewport({ scale: 1.0 });
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          
+          const ctx = canvas.getContext('2d');
+          await page.render({
+            canvasContext: ctx,
+            viewport: viewport
+          }).promise;
+          
+          canvas.classList.remove('opacity-0');
+          if (loading) loading.style.display = 'none';
+        } catch (err) {
+          console.error('Error rendering thumbnail:', pdfUrl, err);
+        }
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            renderThumbnail(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: '200px' }); // start loading slightly before they appear
+
+      pdfContainers.forEach(container => observer.observe(container));
+    });
+
     // Toggle Modal function
     window.toggleModal = function() {
       const modal = document.getElementById('privacy-modal');
