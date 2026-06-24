@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@theme {
+  --font-inter: "Inter", sans-serif;
+  --color-brand-blue: #1e3a8a;
+  --color-brand-gold: #d4af37;
+  --color-brand-sand: #f5f5f0;
+}
+
+@layer base {
+  body {
+    @apply font-inter text-slate-800 bg-slate-50;
+  }
+}

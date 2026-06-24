@@ -1,0 +1,9 @@
+{
+  "name": "sevryukov-form-handler",
+  "version": "1.0.0",
+  "description": "Yandex Cloud Function to handle booking form submissions",
+  "main": "index.js",
+  "dependencies": {
+    "nodemailer": "^6.9.13"
+  }
+}
