@@ -4,454 +4,375 @@ import content from '../data/content.json';
 import docsInfo from '../data/documents.json';
 ---
 
-<Layout 
-  title="Остеопат Севрюков Дмитрий Игоревич | Астрахань"
-  description="Врач-остеопат и невролог в Астрахани. Лечение причин боли, а не симптомов. Прием детей и взрослых."
+<Layout
+  title='Семейный центр остеопатии "Астраханский остеопатический центр Севрюкова"'
+  description="Семейный остеопатический центр в Астрахани. Остеопатия для детей, беременных и взрослых. Мягкие техники без лекарств."
 >
-  <!-- Speed Dial Menu (Floating Action) -->
-  <div id="speed-dial-container" class="fixed bottom-6 right-6 z-50 flex flex-col-reverse items-center gap-3">
-    <!-- Main FAB -->
-    <button id="speed-dial-btn" aria-label="Связаться" class="relative w-14 h-14 bg-brand-blue text-white rounded-full shadow-xl hover:bg-blue-800 transition-all flex items-center justify-center z-10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-blue">
-      <svg id="speed-dial-icon-default" class="w-7 h-7 absolute transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
-      <svg id="speed-dial-icon-close" class="w-7 h-7 absolute transition-all duration-300 scale-0 opacity-0 rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+
+  <!-- Speed Dial -->
+  <div id="speed-dial-container" class="speed-dial-container">
+    <button id="speed-dial-btn" class="speed-dial-btn" aria-label="Связаться">
+      <svg id="speed-dial-icon-default" class="speed-dial-icon" width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+      <svg id="speed-dial-icon-close" class="speed-dial-icon hidden-icon" width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
     </button>
-    
-    <!-- WhatsApp -->
-    <a href={content.contacts.whatsapp} target="_blank" rel="noopener noreferrer" class="speed-dial-item absolute bottom-0 w-12 h-12 bg-green-500 text-white rounded-full shadow-md hover:bg-green-600 flex items-center justify-center transition-all duration-300 opacity-0 scale-50 pointer-events-none" aria-label="WhatsApp">
-      <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.52 3.449A11.94 11.94 0 0 0 12 0a11.96 11.96 0 0 0-11.95 12c0 1.91.5 3.78 1.45 5.43L0 24l6.72-1.75a11.95 11.95 0 0 0 5.28 1.23h.01a11.95 11.95 0 0 0 11.96-12 11.9 11.9 0 0 0-3.45-8.03ZM12 21.48a9.9 9.9 0 0 1-5.06-1.37l-.36-.21-3.76.99 1-3.66-.23-.37A9.94 9.94 0 0 1 2.05 12a9.96 9.96 0 0 1 9.95-10 9.9 9.9 0 0 1 7.04 2.92A9.9 9.9 0 0 1 21.95 12a9.95 9.95 0 0 1-9.95 9.48Zm5.46-7.44c-.3-.15-1.78-.88-2.05-.98-.28-.1-.48-.15-.68.15-.2.3-.77.98-.95 1.18-.17.2-.35.23-.65.08-.3-.15-1.27-.47-2.42-1.32-.89-.66-1.5-1.48-1.67-1.78-.18-.3 0-.46.15-.61.13-.14.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.38-.03-.53-.08-.15-.68-1.64-.93-2.25-.24-.6-.48-.52-.68-.53-.18-.01-.38-.01-.58-.01-.2 0-.53.08-.8.38-.28.3-1.05 1.03-1.05 2.5 0 1.48 1.08 2.9 1.23 3.1.15.2 2.12 3.23 5.14 4.53.72.3 1.28.48 1.72.62.72.23 1.38.2 1.9.12.58-.09 1.78-.73 2.03-1.43.25-.7.25-1.3.18-1.43-.08-.13-.28-.2-.58-.35Z"/></svg>
+    <a href={content.contacts.whatsapp} target="_blank" rel="noopener noreferrer" class="speed-dial-item whatsapp" aria-label="WhatsApp">
+      <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M20.52 3.449A11.94 11.94 0 0 0 12 0a11.96 11.96 0 0 0-11.95 12c0 1.91.5 3.78 1.45 5.43L0 24l6.72-1.75a11.95 11.95 0 0 0 5.28 1.23h.01a11.95 11.95 0 0 0 11.96-12 11.9 11.9 0 0 0-3.45-8.03ZM12 21.48a9.9 9.9 0 0 1-5.06-1.37l-.36-.21-3.76.99 1-3.66-.23-.37A9.94 9.94 0 0 1 2.05 12a9.96 9.96 0 0 1 9.95-10 9.9 9.9 0 0 1 7.04 2.92A9.9 9.9 0 0 1 21.95 12a9.95 9.95 0 0 1-9.95 9.48Zm5.46-7.44c-.3-.15-1.78-.88-2.05-.98-.28-.1-.48-.15-.68.15-.2.3-.77.98-.95 1.18-.17.2-.35.23-.65.08-.3-.15-1.27-.47-2.42-1.32-.89-.66-1.5-1.48-1.67-1.78-.18-.3 0-.46.15-.61.13-.14.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.38-.03-.53-.08-.15-.68-1.64-.93-2.25-.24-.6-.48-.52-.68-.53-.18-.01-.38-.01-.58-.01-.2 0-.53.08-.8.38-.28.3-1.05 1.03-1.05 2.5 0 1.48 1.08 2.9 1.23 3.1.15.2 2.12 3.23 5.14 4.53.72.3 1.28.48 1.72.62.72.23 1.38.2 1.9.12.58-.09 1.78-.73 2.03-1.43.25-.7.25-1.3.18-1.43-.08-.13-.28-.2-.58-.35Z"/></svg>
     </a>
-    
-    <!-- Telegram -->
-    <a href={content.contacts.telegram} target="_blank" rel="noopener noreferrer" class="speed-dial-item absolute bottom-0 w-12 h-12 bg-blue-500 text-white rounded-full shadow-md hover:bg-blue-600 flex items-center justify-center transition-all duration-300 opacity-0 scale-50 pointer-events-none" aria-label="Telegram" style="transition-delay: 50ms;">
-      <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.123-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+    <a href={content.contacts.telegram} target="_blank" rel="noopener noreferrer" class="speed-dial-item telegram" aria-label="Telegram">
+      <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.123-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
     </a>
-    
-    <!-- Max -->
-    <a href={content.contacts.max} target="_blank" rel="noopener noreferrer" class="speed-dial-item absolute bottom-0 w-12 h-12 bg-white rounded-full shadow-md hover:scale-110 flex items-center justify-center transition-all duration-300 opacity-0 scale-50 pointer-events-none" aria-label="Max" style="transition-delay: 100ms;">
-      <img src="https://maxicons.ru/icons/MAX.svg" alt="Иконка MAX" width="32" height="32" />
+    <a href={content.contacts.max} target="_blank" rel="noopener noreferrer" class="speed-dial-item max" aria-label="Max">
+      <img src="https://maxicons.ru/icons/MAX.svg" alt="MAX" width="32" height="32" />
     </a>
   </div>
 
-  <!-- Header (Glassmorphism) -->
-  <header class="fixed top-0 w-full z-40 bg-white/80 backdrop-blur-md border-b border-slate-200/50 shadow-sm transition-all duration-300">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-20">
-        <div class="flex-shrink-0 flex items-center">
-          <span class="font-bold text-xl sm:text-2xl text-brand-blue tracking-tight">Севрюков Д.И.</span>
-        </div>
-        <nav class="hidden md:flex space-x-6 lg:space-x-8">
-          <a href="#about" class="text-slate-600 hover:text-brand-blue font-medium transition-colors">Обо мне</a>
-          <a href="#services" class="text-slate-600 hover:text-brand-blue font-medium transition-colors">Услуги</a>
-          <a href="#documents" class="text-slate-600 hover:text-brand-blue font-medium transition-colors">Документы</a>
-          <a href="#contacts" class="text-slate-600 hover:text-brand-blue font-medium transition-colors">Контакты</a>
-        </nav>
-        <div class="flex items-center gap-4">
-          <a href="tel:+79064327871" class="text-brand-blue font-bold text-lg hidden lg:block hover:text-blue-800 transition-colors">+7 906 432-78-71</a>
-          <a href="#contacts" class="inline-flex justify-center items-center px-5 py-2.5 border border-transparent text-sm font-bold rounded-lg text-white bg-brand-gold hover:bg-yellow-500 shadow-sm transition-all hover:-translate-y-0.5 whitespace-nowrap">
-            Записаться
-          </a>
-        </div>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <div class="logo">
+        <span>✦</span> {content.clinic.name}
+        <span class="logo-sub">{content.clinic.subtitle}</span>
       </div>
+      <nav class="nav">
+        <a href="#services">Услуги</a>
+        <a href="#about">О центре</a>
+        <a href="#doctors">Врачи</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#documents">Документы</a>
+        <a href="#contact">Контакты</a>
+      </nav>
+      <a href={`tel:${content.contacts.phoneTel}`} class="header-phone">{content.contacts.phone}</a>
     </div>
   </header>
 
-  <main class="pt-20">
-    <!-- Hero Section (Двухколоночный) -->
-    <section class="relative bg-gradient-to-br from-brand-sand via-white to-blue-50 py-16 sm:py-24 lg:py-32 overflow-hidden">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
-          <div class="max-w-2xl order-2 lg:order-1 text-center lg:text-left flex flex-col items-center lg:items-start">
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight mb-6 leading-tight">
-              {content.hero.title}
-            </h1>
-            <p class="text-xl sm:text-2xl text-brand-blue font-semibold mb-6">
-              {content.hero.subtitle}
-            </p>
-            <p class="text-lg sm:text-xl text-slate-600 mb-8 leading-relaxed">
-              {content.hero.description}
-            </p>
-            
-            <div class="flex flex-col sm:flex-row gap-4 mb-10 w-full sm:w-auto">
-              <a href="#contacts" class="inline-flex justify-center items-center px-8 py-4 border border-transparent text-lg font-bold rounded-xl text-white bg-brand-blue hover:bg-blue-800 shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5 w-full sm:w-auto">
-                {content.hero.cta}
-              </a>
-              <a href="#services" class="inline-flex justify-center items-center px-8 py-4 border-2 border-slate-200 text-lg font-bold rounded-xl text-slate-700 bg-white hover:bg-slate-50 hover:border-slate-300 transition-all w-full sm:w-auto">
-                Смотреть цены
-              </a>
-            </div>
-
-            <div class="flex flex-wrap justify-center lg:justify-start gap-3">
-              {content.hero.badges.map(badge => (
-                <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-white text-brand-blue shadow-sm border border-slate-100">
-                  <svg class="w-4 h-4 mr-2 text-brand-gold" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                  {badge}
-                </span>
-              ))}
-            </div>
-          </div>
-          
-          <div class="relative flex justify-center lg:justify-end order-1 lg:order-2 mb-4 lg:mb-0">
-            <div class="w-72 h-72 sm:w-96 sm:h-96 lg:w-[400px] lg:h-[500px] overflow-hidden rounded-3xl">
-              <img 
-                src="/images/portrait.jpg" 
-                alt="Севрюков Дмитрий Игоревич" 
-                loading="eager"
-                decoding="async"
-                class="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- About Section (Timeline & Quote) -->
-    <section id="about" class="py-20 sm:py-32 bg-white relative">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-16 text-center">{content.about.title}</h2>
-        
-        <div class="relative mb-20">
-          <svg class="absolute top-0 left-0 transform -translate-x-6 -translate-y-8 h-24 w-24 text-brand-sand" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true"><path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.896 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"/></svg>
-          <p class="relative text-2xl sm:text-3xl font-medium text-slate-700 leading-relaxed italic z-10">
-            {content.about.quote}
-          </p>
-        </div>
-
-        <div class="space-y-12 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-200 before:to-transparent">
-          {content.about.timeline.map((item, index) => (
-            <div class={`relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active`}>
-              <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-brand-blue text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-              </div>
-              <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
-                <div class="flex items-center justify-between mb-2">
-                  <span class="font-bold text-brand-gold text-lg">{item.year}</span>
-                </div>
-                <h3 class="font-bold text-slate-900 text-xl mb-2">{item.title}</h3>
-                <p class="text-slate-600 leading-relaxed">{item.description}</p>
-              </div>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <h1 class="hero-title">
+          {content.hero.titleLine1} <i>{content.hero.titleEmphasis}</i> {content.hero.titleLine2}<br>
+          <span class="hero-subtitle">{content.hero.subtitle}</span>
+        </h1>
+        <p class="hero-text">{content.hero.description}</p>
+        <a href="#contact" class="btn-primary">{content.hero.cta}</a>
+        <div class="hero-stats">
+          {content.hero.stats.map(stat => (
+            <div class="stat-item">
+              <span class="stat-number">{stat.number}</span>
+              <span class="stat-label">{stat.label}</span>
             </div>
           ))}
         </div>
       </div>
-    </section>
+      <div class="hero-image"></div>
+    </div>
+  </section>
 
-    <!-- Services Section -->
-    <section id="services" class="py-20 sm:py-32 bg-slate-50 relative">
-      <div class="absolute inset-0 bg-[url('/pattern.svg')] opacity-5"></div>
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-16 text-center">Услуги и цены</h2>
-        
-        <div class="grid gap-8 md:grid-cols-2">
-          {content.services.map((service, index) => (
-            <div class={`bg-white rounded-3xl p-8 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 relative overflow-hidden group ${index === 1 ? 'border-2 border-brand-gold shadow-lg' : 'border border-slate-100 shadow-sm'}`}>
-              {index === 1 && <div class="absolute top-0 right-0 bg-brand-gold text-white text-xs font-bold px-3 py-1 rounded-bl-lg">Частый выбор</div>}
-              
-              <h3 class="text-2xl font-bold text-brand-blue mb-2">{service.name}</h3>
-              {service.audience && <p class="text-sm font-medium text-slate-500 mb-6 bg-slate-100 inline-block px-3 py-1 rounded-full">{service.audience}</p>}
-              
-              <div class="flex flex-col mb-8 mt-auto">
-                <div class="flex items-end gap-2">
-                  <span class="text-4xl font-extrabold text-slate-900">{service.price}</span>
-                </div>
-                {service.duration && <span class="text-slate-500 font-medium mt-1">Длительность: {service.duration}</span>}
-              </div>
-
-              <button 
-                onclick={`document.getElementById('service').value = '${service.name}'; document.getElementById('contacts').scrollIntoView({behavior: 'smooth'});`}
-                class={`w-full py-4 rounded-xl font-bold text-lg transition-colors ${index === 1 ? 'bg-brand-gold hover:bg-yellow-500 text-slate-900' : 'bg-slate-100 hover:bg-brand-blue hover:text-white text-slate-900'}`}
-              >
-                Записаться
-              </button>
-            </div>
-          ))}
-        </div>
-        
-        <div class="mt-16 bg-white rounded-3xl p-8 sm:p-10 border border-slate-100 shadow-sm flex flex-col md:flex-row gap-8 items-center justify-between">
-          <div class="flex-1">
-            <h3 class="text-2xl font-bold text-slate-900 mb-4">{content.rules.title}</h3>
-            <ul class="space-y-4">
-              {content.rules.items.map((item) => (
-                <li class="flex items-start">
-                  <div class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-50 flex items-center justify-center mt-0.5">
-                    <svg class="h-4 w-4 text-brand-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-                  </div>
-                  <span class="ml-3 text-slate-700 text-lg">{item}</span>
-                </li>
+  <!-- Directions -->
+  <section class="section" id="services">
+    <div class="container">
+      <h2 class="section-title">Направления остеопатии</h2>
+      <p class="section-subtitle">Индивидуальный подход к каждому пациенту. Работаем с причинами, а не со следствиями.</p>
+      <div class="services-grid">
+        {content.directions.map(direction => (
+          <div class="service-card">
+            <div class="service-icon">{direction.icon}</div>
+            <h3>{direction.title}</h3>
+            <ul>
+              {direction.items.map(item => (
+                <li>{item}</li>
               ))}
             </ul>
           </div>
-          <div class="flex-shrink-0 p-6 bg-brand-sand rounded-2xl">
-             <svg class="w-16 h-16 text-brand-gold opacity-50" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="section section-alt" id="pricing">
+    <div class="container">
+      <h2 class="section-title">Услуги и цены</h2>
+      <p class="section-subtitle">Прозрачная стоимость приёма. Работаем без предоплаты.</p>
+      <div class="pricing-grid">
+        {content.services.map(service => (
+          <div class={`price-card${service.featured ? ' featured' : ''}`}>
+            {service.featured && <span class="price-badge">Частый выбор</span>}
+            <h3>{service.name}</h3>
+            {service.audience && <span class="price-audience">{service.audience}</span>}
+            <div class="price-amount">{service.price}</div>
+            {service.duration && <div class="price-duration">Длительность: {service.duration}</div>}
+            <button
+              type="button"
+              class="price-btn"
+              onclick={`document.getElementById('service').value = '${service.name}'; document.getElementById('contact').scrollIntoView({behavior: 'smooth'});`}
+            >
+              Записаться
+            </button>
           </div>
+        ))}
+      </div>
+      <div class="rules-block">
+        <div>
+          <h3>{content.rules.title}</h3>
+          <ul>
+            {content.rules.items.map(item => (
+              <li>{item}</li>
+            ))}
+          </ul>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Contact Form Section -->
-    <section id="contacts" class="py-20 sm:py-32 bg-brand-blue text-white relative overflow-hidden">
-      <div class="absolute inset-0 bg-gradient-to-br from-blue-900 to-brand-blue"></div>
-      <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-blue-800 blur-3xl opacity-50"></div>
-      <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-brand-gold blur-3xl opacity-20"></div>
-      
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-          
-          <div class="bg-white rounded-[2rem] p-8 sm:p-12 text-slate-900 shadow-2xl relative order-2 lg:order-1">
-            <form id="booking-form" class="space-y-6 relative z-10">
-              <!-- Honeypot -->
-              <div class="hidden">
-                <label>Не заполняйте это поле <input type="text" name="bot_field" id="bot_field" tabindex="-1" autocomplete="off" /></label>
-              </div>
-              
-              <div>
-                <label for="name" class="block text-sm font-bold text-slate-700 mb-2">Ваше имя</label>
-                <input type="text" id="name" name="name" required class="w-full px-5 py-4 rounded-xl bg-slate-50 border-2 border-transparent focus:ring-4 focus:ring-brand-blue/20 focus:border-brand-blue outline-none transition-all text-lg" placeholder="Иван Иванов">
-              </div>
-              
-              <div>
-                <label for="phone" class="block text-sm font-bold text-slate-700 mb-2">Телефон</label>
-                <input type="tel" id="phone" name="phone" required class="w-full px-5 py-4 rounded-xl bg-slate-50 border-2 border-transparent focus:ring-4 focus:ring-brand-blue/20 focus:border-brand-blue outline-none transition-all text-lg" placeholder="+7 (999) 000-00-00">
-              </div>
+  <!-- About -->
+  <section class="section section-alt" id="about">
+    <div class="container about-grid">
+      <div>
+        <h2 class="section-title section-title-left">{content.about.title}</h2>
+        <div class="about-text">
+          {content.about.paragraphs.map(p => (
+            <p set:html={p.replace('АОЦ Севрюкова', '<strong>АОЦ Севрюкова</strong>')} />
+          ))}
+        </div>
+        <div class="about-features">
+          {content.about.features.map(feature => (
+            <div class="feature-item">
+              {feature.title}
+              <span>{feature.subtitle}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="about-image"></div>
+    </div>
+  </section>
 
-              <div>
-                <label for="service" class="block text-sm font-bold text-slate-700 mb-2">Желаемая услуга</label>
-                <div class="relative">
-                  <select id="service" name="service" class="w-full px-5 py-4 rounded-xl bg-slate-50 border-2 border-transparent focus:ring-4 focus:ring-brand-blue/20 focus:border-brand-blue outline-none transition-all text-lg appearance-none cursor-pointer">
-                    <option value="Остеопатия детский сеанс">Остеопатия детский сеанс</option>
-                    <option value="Остеопатия взрослый сеанс" selected>Остеопатия взрослый сеанс</option>
-                    <option value="Консультация">Консультация</option>
-                    <option value="Другое">Другое / Затрудняюсь ответить</option>
-                  </select>
-                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-5 text-slate-500">
-                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                  </div>
+  <!-- Doctors -->
+  <section class="section" id="doctors">
+    <div class="container">
+      <h2 class="section-title">Наша команда</h2>
+      <p class="section-subtitle">Остеопаты, невролог, травматолог-ортопед, психолог</p>
+      <div class="doctors-grid">
+        {content.doctors.map(doctor => (
+          <div class="doctor-card">
+            <div class="doctor-photo">{doctor.icon}</div>
+            <div class="doctor-name">{doctor.name}</div>
+            <div class="doctor-spec">{doctor.specialty}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="section section-alt" id="reviews">
+    <div class="container">
+      <h2 class="section-title">Отзывы пациентов</h2>
+      <p class="section-subtitle">{content.reviews.subtitle}</p>
+      <div class="reviews-grid">
+        {content.reviews.items.map(review => (
+          <div class="review-card">
+            <div class="review-text">«{review.text}»</div>
+            <div class="review-author">— {review.author}</div>
+          </div>
+        ))}
+      </div>
+      <div class="aggregators-row">
+        {content.aggregators.map(agg => (
+          <a href={agg.url} target="_blank" rel="noopener noreferrer" class="aggregator-link">{agg.name}</a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Documents -->
+  <section class="section section-alt" id="documents">
+    <div class="container">
+      <h2 class="section-title">{content.documents.title}</h2>
+      <p class="section-subtitle">{content.documents.description}</p>
+      <div class="documents-wrap">
+        <div class="documents-carousel">
+          {docsInfo.map(doc => (
+            <button
+              type="button"
+              class="doc-card"
+              onclick={`openLightbox('${doc.pdf}', '${doc.name.replace(/'/g, "\\'")}')`}
+            >
+              <div class="doc-preview pdf-preview-container" data-pdf={doc.pdf}>
+                <div class="pdf-loading" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--text-muted);">
+                  <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                 </div>
+                <canvas class="pdf-canvas"></canvas>
               </div>
-              
-              <button type="submit" class="w-full bg-brand-gold hover:bg-yellow-500 text-slate-900 font-extrabold text-xl py-5 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 mt-4">
-                Отправить заявку
-              </button>
-              
-              <p class="text-sm text-slate-500 text-center mt-6 leading-relaxed">
-                Нажимая на кнопку, вы даете согласие на обработку персональных данных и соглашаетесь с <button type="button" class="underline hover:text-brand-blue font-semibold" onclick="toggleModal()">Политикой конфиденциальности</button>.
+              <div class="doc-name">{doc.name}</div>
+            </button>
+          ))}
+        </div>
+        <div class="documents-fade-left"></div>
+        <div class="documents-fade-right"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="form-section">
+        <div class="form-grid">
+          <div>
+            <h3 class="form-title">Запишитесь на консультацию</h3>
+            <p class="contact-info-text">Мы подберём удобное время и специалиста.</p>
+            <p class="contact-detail">📍 {content.contacts.address}</p>
+            <p class="contact-detail">📞 <a href={`tel:${content.contacts.phoneTel}`}>{content.contacts.phone}</a></p>
+          </div>
+          <div>
+            <form id="booking-form" class="form-fields">
+              <div class="hidden" aria-hidden="true">
+                <label>Не заполняйте <input type="text" name="bot_field" id="bot_field" tabindex="-1" autocomplete="off" /></label>
+              </div>
+              <div class="form-row">
+                <input type="text" id="name" name="name" placeholder="Ваше имя" required />
+              </div>
+              <div class="form-row">
+                <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required />
+              </div>
+              <div class="form-row">
+                <select id="service" name="service">
+                  {content.services.map((service, i) => (
+                    <option value={service.name} selected={service.featured}>{service.name}</option>
+                  ))}
+                  <option value="Другое">Другое / Затрудняюсь ответить</option>
+                </select>
+              </div>
+              <div class="form-submit-row">
+                <button type="submit">Отправить заявку</button>
+              </div>
+              <p class="form-note">Мы перезвоним</p>
+              <p class="form-privacy">
+                Нажимая на кнопку, вы даёте согласие на обработку персональных данных и соглашаетесь с
+                <button type="button" onclick="toggleModal()">Политикой конфиденциальности</button>.
               </p>
             </form>
-            
-            <div id="form-success" class="hidden text-center py-12 relative z-10">
-              <div class="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg class="w-12 h-12 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-              </div>
-              <h3 class="text-3xl font-extrabold text-slate-900 mb-4">Спасибо!</h3>
-              <p class="text-slate-600 text-lg">Ваша заявка успешно отправлена. Я свяжусь с вами в ближайшее время.</p>
+            <div id="form-success" class="form-success" style="display:none;">
+              <div class="form-success-icon">✓</div>
+              <h3 class="form-title">Спасибо!</h3>
+              <p class="contact-info-text">Ваша заявка успешно отправлена. Мы свяжемся с вами в ближайшее время.</p>
             </div>
           </div>
-
-          <div class="order-1 lg:order-2">
-            <h2 class="text-4xl sm:text-5xl font-extrabold mb-6">Записаться на прием</h2>
-            <p class="text-blue-100 mb-12 text-xl leading-relaxed">Оставьте свои данные, и я свяжусь с вами в ближайшее время для уточнения деталей и выбора удобного времени сеанса.</p>
-            
-            <div class="space-y-8 bg-blue-900/40 p-8 rounded-3xl backdrop-blur-sm border border-white/10">
-              <div class="flex items-start">
-                <div class="bg-white/10 p-3 rounded-full shrink-0 mr-4">
-                  <svg class="w-6 h-6 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                </div>
-                <div>
-                  <h4 class="text-white/60 text-sm font-medium mb-1">Адрес кабинета</h4>
-                  <span class="text-lg font-medium">{content.contacts.address}</span>
-                </div>
-              </div>
-              <div class="flex items-start">
-                <div class="bg-white/10 p-3 rounded-full shrink-0 mr-4">
-                  <svg class="w-6 h-6 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-                </div>
-                <div>
-                  <h4 class="text-white/60 text-sm font-medium mb-1">Телефон</h4>
-                  <a href="tel:+79064327871" class="text-lg font-medium hover:text-brand-gold transition-colors">{content.contacts.phone}</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Documents & Aggregators Section -->
-    <section id="documents" class="py-20 sm:py-32 bg-slate-50 relative overflow-hidden">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-6 text-center">Документы и Сертификаты</h2>
-        <p class="text-center text-slate-600 text-lg mb-12 max-w-2xl mx-auto">Дипломы об окончании Саратовского военно-медицинского института, Русская высшая школа остеопатической медицины и свидетельства специалиста.</p>
-        
-        <!-- Horizontal Carousel -->
-        <div class="relative group">
-          <div class="flex overflow-x-auto gap-6 snap-x snap-mandatory pb-8 pt-4 px-4 -mx-4 scrollbar-hide" style="scrollbar-width: none; -ms-overflow-style: none;">
-            {docsInfo.map((doc) => (
-              <div class="snap-center shrink-0 w-72">
-                <button 
-                  type="button"
-                  onclick={`openLightbox('${doc.pdf}', '${doc.name}')`}
-                  class="w-full text-left block bg-white border border-slate-200 rounded-3xl p-4 text-center hover:shadow-xl hover:-translate-y-2 hover:border-brand-blue transition-all duration-300 h-full flex flex-col group/card focus:outline-none focus:ring-4 focus:ring-brand-blue/30 cursor-pointer"
-                >
-                  <div class="w-full aspect-[1/1.4] bg-slate-100 rounded-2xl mb-4 relative overflow-hidden flex items-center justify-center pdf-preview-container" data-pdf={doc.pdf}>
-                    <div class="absolute inset-0 flex items-center justify-center text-slate-400 z-0 pdf-loading">
-                      <svg class="w-8 h-8 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                    </div>
-                    <canvas class="w-full h-full object-cover relative z-10 opacity-0 transition-opacity duration-500 pdf-canvas"></canvas>
-                    <div class="absolute inset-0 bg-brand-blue/0 group-hover/card:bg-brand-blue/10 transition-colors duration-300 z-20 flex items-center justify-center">
-                      <div class="bg-white text-brand-blue rounded-full p-3 opacity-0 group-hover/card:opacity-100 transform translate-y-4 group-hover/card:translate-y-0 transition-all duration-300 shadow-lg">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-                      </div>
-                    </div>
-                  </div>
-                  <h4 class="text-sm font-bold text-slate-800 group-hover/card:text-brand-blue px-2 leading-tight flex-grow flex items-center justify-center">
-                    {doc.name}
-                  </h4>
-                </button>
-              </div>
-            ))}
-          </div>
-          <!-- Decorative gradients for scroll indication -->
-          <div class="pointer-events-none absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-slate-50 to-transparent"></div>
-          <div class="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-slate-50 to-transparent"></div>
-        </div>
-
-        <div class="mt-24">
-          <h3 class="text-2xl font-bold text-slate-900 mb-10 text-center">Отзывы на ведущих порталах</h3>
-          <div class="flex flex-wrap justify-center items-center gap-4 sm:gap-8">
-            {content.aggregators.map(agg => (
-              <a href={agg.url} target="_blank" rel="noopener noreferrer" class="px-6 py-4 bg-white border border-slate-200 rounded-xl shadow-sm hover:shadow-md hover:-translate-y-1 transition-all font-semibold text-slate-700 hover:text-brand-blue flex items-center gap-3">
-                {agg.name}
-                <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-              </a>
-            ))}
-          </div>
-        </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h4 class="footer-logo">✦ {content.clinic.name}</h4>
+        <p style="max-width:300px;">{content.clinic.tagline}</p>
       </div>
-    </section>
-  </main>
-
-  <footer class="bg-slate-950 text-slate-400 py-16 border-t border-slate-900">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-8">
-        <div>
-          <span class="font-bold text-2xl text-white tracking-tight mb-2 block">Севрюков Д.И.</span>
-          <p class="text-slate-500">Врач-остеопат, невролог</p>
-        </div>
-        
-        <div class="flex space-x-4">
-          <a href={content.contacts.whatsapp} target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-slate-900 hover:bg-green-500 hover:text-white rounded-full flex items-center justify-center transition-colors" aria-label="WhatsApp">
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.52 3.449A11.94 11.94 0 0 0 12 0a11.96 11.96 0 0 0-11.95 12c0 1.91.5 3.78 1.45 5.43L0 24l6.72-1.75a11.95 11.95 0 0 0 5.28 1.23h.01a11.95 11.95 0 0 0 11.96-12 11.9 11.9 0 0 0-3.45-8.03ZM12 21.48a9.9 9.9 0 0 1-5.06-1.37l-.36-.21-3.76.99 1-3.66-.23-.37A9.94 9.94 0 0 1 2.05 12a9.96 9.96 0 0 1 9.95-10 9.9 9.9 0 0 1 7.04 2.92A9.9 9.9 0 0 1 21.95 12a9.95 9.95 0 0 1-9.95 9.48Zm5.46-7.44c-.3-.15-1.78-.88-2.05-.98-.28-.1-.48-.15-.68.15-.2.3-.77.98-.95 1.18-.17.2-.35.23-.65.08-.3-.15-1.27-.47-2.42-1.32-.89-.66-1.5-1.48-1.67-1.78-.18-.3 0-.46.15-.61.13-.14.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.38-.03-.53-.08-.15-.68-1.64-.93-2.25-.24-.6-.48-.52-.68-.53-.18-.01-.38-.01-.58-.01-.2 0-.53.08-.8.38-.28.3-1.05 1.03-1.05 2.5 0 1.48 1.08 2.9 1.23 3.1.15.2 2.12 3.23 5.14 4.53.72.3 1.28.48 1.72.62.72.23 1.38.2 1.9.12.58-.09 1.78-.73 2.03-1.43.25-.7.25-1.3.18-1.43-.08-.13-.28-.2-.58-.35Z"/></svg>
-          </a>
-          <a href={content.contacts.telegram} target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-slate-900 hover:bg-blue-500 hover:text-white rounded-full flex items-center justify-center transition-colors" aria-label="Telegram">
-            <svg class="w-5 h-5 ml-[-2px]" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.123-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-          </a>
-          <a href={content.contacts.instagram} target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-slate-900 hover:bg-pink-600 hover:text-white rounded-full flex items-center justify-center transition-colors" aria-label="Instagram">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.88z"/></svg>
-          </a>
-          <a href={content.contacts.max} target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-slate-900 hover:bg-white rounded-full flex items-center justify-center transition-colors" aria-label="Max">
-            <img src="https://maxicons.ru/icons/MAX.svg" alt="Иконка MAX" width="24" height="24" class="opacity-80 hover:opacity-100 transition-opacity" />
-          </a>
-        </div>
+      <div>
+        <h4>Время работы</h4>
+        <p>{content.clinic.hours}</p>
+        <p style="margin-top:10px;">{content.clinic.hoursNote}</p>
       </div>
-
-      <div class="border-t border-slate-800 pt-8 text-sm">
-        <p class="mb-4">&copy; {new Date().getFullYear()} Севрюков Дмитрий Игоревич. Все права защищены.</p>
-        <p class="text-slate-500 max-w-4xl leading-relaxed mb-4">
-          Обращаем ваше внимание на то, что данный интернет-сайт носит исключительно информационный характер и ни при каких условиях не является публичной офертой, определяемой положениями Статьи 437 (2) Гражданского кодекса Российской Федерации. Для получения подробной информации о стоимости услуг, пожалуйста, обращайтесь по указанным контактным телефонам.
-        </p>
-        <p class="text-slate-500 font-bold">Имеются противопоказания. Необходима консультация специалиста.</p>
+      <div>
+        <h4>Полезное</h4>
+        {content.footer.links.map(link => (
+          link.modal ? (
+            <button type="button" onclick="toggleModal()" style="background:none;border:none;color:#bcccd6;cursor:pointer;padding:0;font-size:inherit;text-align:left;display:block;margin-bottom:8px;">{link.label}</button>
+          ) : (
+            <a href={link.href}>{link.label}</a>
+          )
+        ))}
       </div>
+    </div>
+    <div class="container footer-bottom">
+      © {new Date().getFullYear()} «{content.clinic.name}».
+      <p class="footer-disclaimer">
+        Обращаем ваше внимание на то, что данный интернет-сайт носит исключительно информационный характер и ни при каких условиях не является публичной офертой, определяемой положениями Статьи 437 (2) Гражданского кодекса Российской Федерации.
+        Имеются противопоказания. Необходима консультация специалиста.
+      </p>
     </div>
   </footer>
 
-  <!-- Privacy Policy Modal -->
-  <div id="privacy-modal" class="fixed inset-0 z-[100] hidden">
-    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onclick="toggleModal()"></div>
-    <div class="absolute inset-0 flex items-center justify-center p-4 pointer-events-none">
-      <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[80vh] flex flex-col overflow-hidden pointer-events-auto transform transition-transform">
-        <div class="p-6 border-b border-slate-100 flex justify-between items-center">
-          <h3 class="text-xl font-bold text-slate-900">Политика конфиденциальности</h3>
-          <button onclick="toggleModal()" class="text-slate-400 hover:text-slate-600 transition-colors p-2 rounded-lg hover:bg-slate-100">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+  <!-- Privacy Modal -->
+  <div id="privacy-modal" class="modal-overlay">
+    <div class="modal-backdrop" onclick="toggleModal()"></div>
+    <div class="modal-content-wrap">
+      <div class="modal-panel">
+        <div class="modal-header">
+          <h3>Политика конфиденциальности</h3>
+          <button class="modal-close" onclick="toggleModal()" aria-label="Закрыть">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
           </button>
         </div>
-        <div class="p-6 overflow-y-auto prose prose-sm text-slate-600">
+        <div class="modal-body">
           <p>Настоящая Политика конфиденциальности описывает, как мы собираем, используем и защищаем ваши персональные данные в соответствии с Федеральным законом № 152-ФЗ «О персональных данных».</p>
-          <h4 class="text-slate-900 font-bold mt-4 mb-2">1. Сбор данных</h4>
+          <h4>1. Сбор данных</h4>
           <p>Мы собираем только те данные, которые вы добровольно предоставляете при заполнении формы записи на сайте: имя и номер телефона.</p>
-          <h4 class="text-slate-900 font-bold mt-4 mb-2">2. Использование данных</h4>
+          <h4>2. Использование данных</h4>
           <p>Предоставленные данные используются исключительно для обратной связи с вами, уточнения деталей записи на прием и оказания медицинских услуг.</p>
-          <h4 class="text-slate-900 font-bold mt-4 mb-2">3. Защита данных</h4>
+          <h4>3. Защита данных</h4>
           <p>Мы принимаем все необходимые организационные и технические меры для защиты персональных данных от неправомерного доступа, уничтожения, изменения или блокирования.</p>
-          <h4 class="text-slate-900 font-bold mt-4 mb-2">4. Передача третьим лицам</h4>
+          <h4>4. Передача третьим лицам</h4>
           <p>Ваши персональные данные не передаются третьим лицам, за исключением случаев, прямо предусмотренных законодательством РФ.</p>
         </div>
-        <div class="p-6 border-t border-slate-100 bg-slate-50 text-right">
-          <button onclick="toggleModal()" class="px-8 py-3 bg-brand-blue text-white rounded-xl font-bold hover:bg-blue-800 transition-colors shadow-sm hover:shadow">Понятно</button>
+        <div class="modal-footer">
+          <button onclick="toggleModal()">Понятно</button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Lightbox Modal for PDF Previews -->
-  <div id="lightbox-modal" class="fixed inset-0 z-[110] hidden flex flex-col items-center justify-center p-4 sm:p-8">
-    <div class="absolute inset-0 bg-slate-950/90 backdrop-blur-sm transition-opacity" onclick="closeLightbox()"></div>
-    <div class="relative w-full max-w-4xl max-h-full flex flex-col items-center pointer-events-none">
-      <button onclick="closeLightbox()" class="absolute -top-12 right-0 sm:-right-12 text-white/70 hover:text-white p-2 pointer-events-auto transition-colors">
-        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+  <!-- Lightbox -->
+  <div id="lightbox-modal" class="lightbox-overlay">
+    <div class="lightbox-backdrop" onclick="closeLightbox()"></div>
+    <div class="lightbox-inner">
+      <button class="lightbox-close" onclick="closeLightbox()" aria-label="Закрыть">
+        <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
       </button>
-      <div class="bg-white rounded-lg overflow-hidden shadow-2xl relative pointer-events-auto max-h-[85vh] w-full flex items-center justify-center">
-        <div id="lightbox-loading" class="absolute inset-0 flex items-center justify-center bg-slate-100 z-0">
-           <svg class="w-10 h-10 text-brand-blue animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+      <div class="lightbox-canvas-wrap">
+        <div id="lightbox-loading" class="lightbox-loading">
+          <svg width="40" height="40" fill="none" stroke="var(--primary-mid)" viewBox="0 0 24 24" style="animation:spin 1s linear infinite;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
         </div>
-        <canvas id="lightbox-canvas" class="max-w-full max-h-[85vh] object-contain relative z-10"></canvas>
+        <canvas id="lightbox-canvas" style="max-width:100%;max-height:85vh;"></canvas>
       </div>
-      <h3 id="lightbox-title" class="text-white text-xl font-bold mt-6 text-center pointer-events-auto"></h3>
+      <h3 id="lightbox-title" class="lightbox-title"></h3>
     </div>
   </div>
 
-  <!-- PDF.js CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-  
+
   <script>
-    // Initialize PDF.js worker
     window.pdfjsLib = window['pdfjs-dist/build/pdf'];
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
-    // Lightbox logic
     const lightboxModal = document.getElementById('lightbox-modal');
-    const lightboxCanvas = document.getElementById('lightbox-canvas');
+    const lightboxCanvas = document.getElementById('lightbox-canvas') as HTMLCanvasElement;
     const lightboxTitle = document.getElementById('lightbox-title');
     const lightboxLoading = document.getElementById('lightbox-loading');
-    
-    window.openLightbox = async function(pdfUrl, title) {
+
+    window.openLightbox = async function(pdfUrl: string, title: string) {
       if (!lightboxModal) return;
-      lightboxModal.classList.remove('hidden');
+      lightboxModal.classList.add('open');
       document.body.style.overflow = 'hidden';
       if (lightboxTitle) lightboxTitle.textContent = title;
       if (lightboxLoading) lightboxLoading.style.display = 'flex';
-      
+
       const ctx = lightboxCanvas.getContext('2d');
-      ctx.clearRect(0, 0, lightboxCanvas.width, lightboxCanvas.height);
-      
+      if (ctx) ctx.clearRect(0, 0, lightboxCanvas.width, lightboxCanvas.height);
+
       try {
-        const loadingTask = pdfjsLib.getDocument(pdfUrl);
-        const pdf = await loadingTask.promise;
+        const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
         const page = await pdf.getPage(1);
-        
-        // Render at high resolution for lightbox
         const viewport = page.getViewport({ scale: 2.5 });
         lightboxCanvas.width = viewport.width;
         lightboxCanvas.height = viewport.height;
-        
-        await page.render({
-          canvasContext: ctx,
-          viewport: viewport
-        }).promise;
-        
+        await page.render({ canvasContext: ctx!, viewport }).promise;
       } catch (err) {
-        console.error('Error rendering high-res PDF:', err);
+        console.error('Error rendering PDF:', err);
       } finally {
         if (lightboxLoading) lightboxLoading.style.display = 'none';
       }
@@ -459,42 +380,33 @@ import docsInfo from '../data/documents.json';
 
     window.closeLightbox = function() {
       if (lightboxModal) {
-        lightboxModal.classList.add('hidden');
+        lightboxModal.classList.remove('open');
         document.body.style.overflow = '';
       }
     };
 
-    // Lazy load PDF thumbnails using IntersectionObserver
     document.addEventListener('DOMContentLoaded', () => {
       const pdfContainers = document.querySelectorAll('.pdf-preview-container');
-      
-      const renderThumbnail = async (container) => {
-        if (container.dataset.rendered === 'true') return;
-        container.dataset.rendered = 'true';
-        
-        const pdfUrl = container.dataset.pdf;
-        const canvas = container.querySelector('.pdf-canvas');
-        const loading = container.querySelector('.pdf-loading');
-        
+
+      const renderThumbnail = async (container: Element) => {
+        const el = container as HTMLElement;
+        if (el.dataset.rendered === 'true') return;
+        el.dataset.rendered = 'true';
+
+        const pdfUrl = el.dataset.pdf;
+        const canvas = el.querySelector('.pdf-canvas') as HTMLCanvasElement;
+        const loading = el.querySelector('.pdf-loading') as HTMLElement;
         if (!canvas || !pdfUrl) return;
-        
+
         try {
-          const loadingTask = pdfjsLib.getDocument(pdfUrl);
-          const pdf = await loadingTask.promise;
+          const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
           const page = await pdf.getPage(1);
-          
-          // Render at lower resolution for thumbnails
           const viewport = page.getViewport({ scale: 1.0 });
           canvas.width = viewport.width;
           canvas.height = viewport.height;
-          
           const ctx = canvas.getContext('2d');
-          await page.render({
-            canvasContext: ctx,
-            viewport: viewport
-          }).promise;
-          
-          canvas.classList.remove('opacity-0');
+          await page.render({ canvasContext: ctx!, viewport }).promise;
+          canvas.classList.add('loaded');
           if (loading) loading.style.display = 'none';
         } catch (err) {
           console.error('Error rendering thumbnail:', pdfUrl, err);
@@ -508,27 +420,20 @@ import docsInfo from '../data/documents.json';
             observer.unobserve(entry.target);
           }
         });
-      }, { rootMargin: '200px' }); // start loading slightly before they appear
+      }, { rootMargin: '200px' });
 
       pdfContainers.forEach(container => observer.observe(container));
     });
 
-    // Toggle Modal function
     window.toggleModal = function() {
       const modal = document.getElementById('privacy-modal');
       if (modal) {
-        const isHidden = modal.classList.contains('hidden');
-        if (isHidden) {
-          modal.classList.remove('hidden');
-          document.body.style.overflow = 'hidden'; // Lock scroll
-        } else {
-          modal.classList.add('hidden');
-          document.body.style.overflow = ''; // Unlock scroll
-        }
+        const isOpen = modal.classList.contains('open');
+        modal.classList.toggle('open', !isOpen);
+        document.body.style.overflow = isOpen ? '' : 'hidden';
       }
     };
 
-    // Speed Dial toggle logic
     const speedDialBtn = document.getElementById('speed-dial-btn');
     const speedDialItems = document.querySelectorAll('.speed-dial-item');
     const iconDefault = document.getElementById('speed-dial-icon-default');
@@ -538,35 +443,26 @@ import docsInfo from '../data/documents.json';
     if (speedDialBtn) {
       speedDialBtn.addEventListener('click', () => {
         isSpeedDialOpen = !isSpeedDialOpen;
-        
+
         if (isSpeedDialOpen) {
-          iconDefault?.classList.add('scale-0', 'opacity-0', '-rotate-90');
-          iconClose?.classList.remove('scale-0', 'opacity-0', 'rotate-90');
-          
-          speedDialItems.forEach(item => {
-            item.classList.remove('opacity-0', 'scale-50', 'pointer-events-none');
-            item.classList.add('opacity-100', 'scale-100', 'pointer-events-auto', 'relative', 'bottom-0');
-            item.classList.remove('absolute');
-          });
+          iconDefault?.classList.add('hidden-icon');
+          iconClose?.classList.remove('hidden-icon');
+          speedDialItems.forEach(item => item.classList.add('open'));
         } else {
-          iconDefault?.classList.remove('scale-0', 'opacity-0', '-rotate-90');
-          iconClose?.classList.add('scale-0', 'opacity-0', 'rotate-90');
-          
-          speedDialItems.forEach(item => {
-            item.classList.add('opacity-0', 'scale-50', 'pointer-events-none', 'absolute');
-            item.classList.remove('opacity-100', 'scale-100', 'pointer-events-auto', 'relative', 'bottom-0');
-          });
+          iconDefault?.classList.remove('hidden-icon');
+          iconClose?.classList.add('hidden-icon');
+          speedDialItems.forEach(item => item.classList.remove('open'));
         }
       });
     }
 
-    // Phone mask and form handling logic
     const phoneInput = document.getElementById('phone') as HTMLInputElement;
     if (phoneInput) {
       phoneInput.addEventListener('input', function (e) {
-        let x = e.target.value.replace(/\D/g, '').match(/(\d{0,1})(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
-        if (!x[2]) { e.target.value = '+7'; return; }
-        e.target.value = '+7 (' + x[2] + (x[3] ? ') ' + x[3] : '') + (x[4] ? '-' + x[4] : '') + (x[5] ? '-' + x[5] : '');
+        const target = e.target as HTMLInputElement;
+        const x = target.value.replace(/\D/g, '').match(/(\d{0,1})(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
+        if (!x || !x[2]) { target.value = '+7'; return; }
+        target.value = '+7 (' + x[2] + (x[3] ? ') ' + x[3] : '') + (x[4] ? '-' + x[4] : '') + (x[5] ? '-' + x[5] : '');
       });
     }
 
@@ -576,25 +472,19 @@ import docsInfo from '../data/documents.json';
     if (form) {
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
-        // Check honeypot
+
         const botField = (document.getElementById('bot_field') as HTMLInputElement)?.value;
         if (botField) {
-          form.classList.add('hidden');
-          if (successMsg) successMsg.classList.remove('hidden');
+          form.style.display = 'none';
+          if (successMsg) successMsg.style.display = 'block';
           return;
         }
 
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
-        
-        // TODO: Update URL when Cloud Function is ready
-        const API_URL = '/api/submit'; 
-        
+        const API_URL = '/api/submit';
+
         try {
-          // Temporarily mock success until backend is ready
-          form.classList.add('hidden');
-          if (successMsg) successMsg.classList.remove('hidden');
+          form.style.display = 'none';
+          if (successMsg) successMsg.style.display = 'block';
         } catch (error) {
           console.error(error);
           alert('Произошла ошибка при отправке заявки. Пожалуйста, напишите в WhatsApp.');
